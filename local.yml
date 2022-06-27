@@ -10,3 +10,10 @@
         - git
         - neovim
         - btop
+
+  - name: Copy Wallpaper
+    copy:
+      src: files/wallpapers/wallpaper.jpg
+      dest: /home/{{ lookup('env','USER') }/Wallpapers/ansible-wallpaper.jpg
+      owner: root
+      group: root
