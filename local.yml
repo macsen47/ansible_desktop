@@ -10,10 +10,31 @@
         - git
         - neovim
         - btop
+        - mousepad
+        - spice-vdagent
+        - python-psutil
+        - kitty
+
+  - name: Create Wallpaper Dir
+    become_user: nosleep
+    file:
+      path: /home/nosleep/Wallpapers
+      state: directory
 
   - name: Copy Wallpaper
+    become_user: nosleep
     copy:
       src: files/wallpapers/wallpaper.jpg
-      dest: ~/Wallpapers/ansible-wallpaper.jpg
-      owner: root
-      group: root
+      dest: /home/nosleep/Wallpapers/ansible-wallpaper.jpg
+
+  - name: Set Wallpaper
+    become_user: nosleep
+    dconf:
+      key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///home/nosleep/Wallpapers/ansible-wallpaper.jpg'"
+
+  - name: Set Wallpaper Position
+    become_user: nosleep
+    dconf:
+      key: "/org/gnome/desktop/background/picture-options"
+      value: "'zoom'"
