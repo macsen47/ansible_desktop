@@ -4,6 +4,9 @@
   become: true
 
   tasks:
-  - name: Install git
+  - name: Install Base Packages
     package:
-      name: git
+      name: 
+        - git
+        - neovim
+        - btop
