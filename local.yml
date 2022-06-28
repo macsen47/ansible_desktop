@@ -27,10 +27,16 @@
       src: files/wallpapers/wallpaper.jpg
       dest: /home/nosleep/Wallpapers/ansible-wallpaper.jpg
 
-  - name: Set Wallpaper
+  - name: Set Wallpaper LightMode
     become_user: nosleep
     dconf:
       key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///home/nosleep/Wallpapers/ansible-wallpaper.jpg'"
+      
+  - name: Set Wallpaper DarkMode
+    become_user: nosleep
+    dconf:
+      key: "/org/gnome/desktop/background/picture-uri-dark"
       value: "'file:///home/nosleep/Wallpapers/ansible-wallpaper.jpg'"
 
   - name: Set Wallpaper Position
